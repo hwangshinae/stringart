@@ -33,7 +33,7 @@ function draw() {
   background(255, 255, 255);
   translate(width / 2, height / 2);
 
-  let radi = 250; //원의 반지름
+  let radi = 150; //원의 반지름
   circle(0, 0, radi * 2);
 
   stroke('blue');
