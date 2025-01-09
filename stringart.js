@@ -4,7 +4,7 @@ function setup() {
   degree = 0;
 
   let p = createP('시작점');
-  p.position(1030, 360);
+  p.position(1100, 400);
 
   //점의 개수 입력
   let w = createP('점의 개수 :');
