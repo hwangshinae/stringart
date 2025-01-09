@@ -8,7 +8,7 @@ function setup() {
 
   //점의 개수 입력
   let w = createP('점의 개수 :');
-  w.position(100, 80);
+  w.position(110, 85);
   InputNumber = createInput('72');
   InputNumber.position(200, 100);
 
