@@ -37,12 +37,12 @@ function draw() {
   circle(0, 0, radi * 2);
 
   stroke('blue');
-  strokeWeight(15);
+  strokeWeight(10);
   point(radi, 0); //시작점
 
   //원 위에 점찍기기
   stroke('red');
-  strokeWeight(2);
+  strokeWeight(1);
 
   let n = InputNumber.value(); // 점의 개수
   let m = 360 / n; // 점 사이 간격 각도
@@ -68,5 +68,5 @@ function draw() {
   }
 
   stroke('black');
-  strokeWeight(5);
+  strokeWeight(1);
 }
