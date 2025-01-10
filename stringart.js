@@ -37,12 +37,11 @@ function draw() {
   circle(0, 0, radi * 2);
 
   stroke('blue');
-  strokeWeight(10);
+  strokeWeight(8);
   point(radi, 0); //시작점
+  text('start', radi+1, 0);
 
   //원 위에 점 찍기, 선 긋기
- 
-
   let n = InputNumber.value(); // 점의 개수
   let m = 360 / n; // 점 사이 간격 각도
   let a = InputA.value(); // y=ax+b에서 a
@@ -55,10 +54,11 @@ function draw() {
   let count = 0;
 
   for (let i = 0; i < 400; i += m) {
-    stroke('red');
+    stroke('blue');
     strokeWeight(3);
     point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
 
+    stroke('red');
     strokeWeight(1);
     startx = radi * Math.cos(degreeToRad(m * count));
     starty = radi * Math.sin(degreeToRad(m * count));
