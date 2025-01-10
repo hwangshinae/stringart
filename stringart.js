@@ -64,7 +64,7 @@ function draw() {
     textSize(8);
     j = Math.floor(i/m+1);
     text(j, (radi+12) * Math.cos(degreeToRad(m * count))-7 , (radi+12) * Math.sin(degreeToRad(m * count))+3 );
-    }
+    
     endx = radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b));
     endy = radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b));
 
