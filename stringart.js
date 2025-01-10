@@ -40,9 +40,8 @@ function draw() {
   strokeWeight(10);
   point(radi, 0); //시작점
 
-  //원 위에 점찍기기
-  stroke('red');
-  strokeWeight(1);
+  //원 위에 점 찍기, 선 긋기
+ 
 
   let n = InputNumber.value(); // 점의 개수
   let m = 360 / n; // 점 사이 간격 각도
@@ -56,8 +55,11 @@ function draw() {
   let count = 0;
 
   for (let i = 0; i < 400; i += m) {
+    stroke('red');
+    strokeWeight(3);
     point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
 
+    strokeWeight(1);
     startx = radi * Math.cos(degreeToRad(m * count));
     starty = radi * Math.sin(degreeToRad(m * count));
     endx = radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b));
