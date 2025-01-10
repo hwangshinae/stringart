@@ -62,6 +62,7 @@ function draw() {
     strokeWeight(1);
     startx = radi * Math.cos(degreeToRad(m * count));
     starty = radi * Math.sin(degreeToRad(m * count));
+    text(i, radi * Math.cos(degreeToRad(m * count))+5, radi * Math.sin(degreeToRad(m * count))+5);
     endx = radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b));
     endy = radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b));
 
