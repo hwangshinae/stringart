@@ -3,9 +3,6 @@ function setup() {
   size = 20;
   degree = 0;
 
-  let p = createP('시작점');
-  p.position(1030, 360);
-
   //원의 반지름
   let rr = createP('원의 지름 :');
   rr.position(100, 50);
