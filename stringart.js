@@ -39,7 +39,8 @@ function draw() {
   stroke('blue');
   strokeWeight(8);
   point(radi, 0); //시작점
-  //text('start', radi+1, 0);
+  stroke('white');
+  text('start', radi+3, 0);
 
   //원 위에 점 찍기, 선 긋기
   let n = InputNumber.value(); // 점의 개수
