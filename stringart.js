@@ -62,7 +62,9 @@ function draw() {
     startx = radi * Math.cos(degreeToRad(m * count));
     starty = radi * Math.sin(degreeToRad(m * count));
     textSize(8);
-    text(i/m+1, (radi+12) * Math.cos(degreeToRad(m * count))-7 , (radi+12) * Math.sin(degreeToRad(m * count))+3 );
+    j = Math.floor(i/m+1);
+    text(j, (radi+12) * Math.cos(degreeToRad(m * count))-7 , (radi+12) * Math.sin(degreeToRad(m * count))+3 );
+    }
     endx = radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b));
     endy = radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b));
 
