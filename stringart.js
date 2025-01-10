@@ -39,8 +39,6 @@ function draw() {
   stroke('blue');
   strokeWeight(8);
   point(radi, 0); //시작점
-  stroke('white');
-  text('start', radi+3, 0);
 
   //원 위에 점 찍기, 선 긋기
   let n = InputNumber.value(); // 점의 개수
@@ -54,7 +52,7 @@ function draw() {
   let endy = 0;
   let count = 0;
 
-  for (let i = 0; i < 400; i += m) {
+  for (let i = 0; i < 360; i += m) {
     stroke('blue');
     strokeWeight(3);
     point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
@@ -63,7 +61,7 @@ function draw() {
     strokeWeight(1);
     startx = radi * Math.cos(degreeToRad(m * count));
     starty = radi * Math.sin(degreeToRad(m * count));
-    text(i/m, (radi+12) * Math.cos(degreeToRad(m * count))-7 , (radi+12) * Math.sin(degreeToRad(m * count))+3 );
+    text(i/m+1, (radi+12) * Math.cos(degreeToRad(m * count))-7 , (radi+12) * Math.sin(degreeToRad(m * count))+3 );
     endx = radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b));
     endy = radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b));
 
