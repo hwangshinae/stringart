@@ -1,5 +1,7 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  background(255, 255, 255);
+  translate(width / 2, height / 2);
   size = 20;
   degree = 0;
 
@@ -26,10 +28,20 @@ function setup() {
   InputA.position(200, 130);
   InputB = createInput('0');
   InputB.position(200, 160);
+  let t = createP('천천히 그리기');
+  t.position(250, 607);
 
   //체크박스
   checkbox = createCheckbox('숫자표시');
   checkbox.position(200, 190);
+
+  checkboxLine = createCheckbox('한 번에 그리기');
+  checkboxLine.position(300,190);
+
+  //슬라이드
+  lineSlider = createSlider(0, 360, 0, 10);
+  lineSlider.position(windowWidth / 2 -70, windowHeight / 2 + 250);
+  lineSlider.size(280);
 }
 
 function degreeToRad(degree) {
@@ -39,39 +51,37 @@ function degreeToRad(degree) {
 function draw() {
   background(255, 255, 255);
   translate(width / 2, height / 2);
+  //text('천천히 그리기 :', -250, 245);
 
-  let radi = 150; //원의 반지름
-  let r = InputR.value();  
-  radi = r/2;                     //원의 반지름
-  let n = InputNumber.value();    // 점의 개수
-  let m = 360 / n;                // 점 사이 간격 각도
-  let a = InputA.value();         // y=ax+b에서 a
-  let b = InputB.value();         // y=ax+b에서 b
+  radi = 150; //원의 반지름
+  r = InputR.value();
+  radi = r / 2; //원의 반지름 값 받아오기기
+  n = InputNumber.value(); // 점의 개수
+  m = 360 / n; // 점 사이 간격 각도
+  a = InputA.value(); // y=ax+b에서 a
+  b = InputB.value(); // y=ax+b에서 b
 
-  let startx = 0; //시작점점
+  let startx = 0; //시작점
   let starty = 0;
-  let endx = 0; //끝점점
+  let endx = 0; //끝점
   let endy = 0;
   let count = 0;
-  
+
   strokeWeight(1);
   circle(0, 0, radi * 2);
 
   stroke('blue');
   strokeWeight(8);
   point(radi, 0); //시작점
-  stroke('white');
-
- 
 
   //숫자표시 체크박스
-  for (let i = 0; i < 360; i += m) {
+  for (let k = 0; k < 360; k += m) {
     if (checkbox.checked()) {
-      if (n < 100) {
+      if (n < 200) {
         textSize(8);
         stroke('black');
         strokeWeight(1);
-        j = Math.floor(i / m + 1);
+        j = Math.floor(k / m + 1);
         text(
           j,
           (radi + 12) * Math.cos(degreeToRad(m * count)) - 7,
@@ -79,21 +89,47 @@ function draw() {
         );
       }
     }
-
-    stroke('blue');
-    strokeWeight(3);
-    point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
-    stroke('red');
-    strokeWeight(1);
-    startx = radi * Math.cos(degreeToRad(m * count));
-    starty = radi * Math.sin(degreeToRad(m * count));
-    endx = radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b));
-    endy = radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b));
-
-    line(startx, starty, endx, endy); //선 긋기
     count++;
   }
 
+  //선 그리기
+  for (let i = 0; i < 360; i += m) {
+    //스크롤바
+    if (lineSlider.value() >= i + m) {
+      stroke('blue');
+      strokeWeight(3);
+      point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
+      stroke('red');
+      strokeWeight(1);
+      startx = radi * Math.cos(degreeToRad(m * count));
+      starty = radi * Math.sin(degreeToRad(m * count));
+      endx =
+        radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
+      endy =
+        radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
+
+      line(startx, starty, endx, endy);
+      count++;
+    }
+    //한 번에 그리기기
+    else if (checkboxLine.checked()) {
+      stroke('blue');
+      strokeWeight(3);
+      point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
+      stroke('red');
+      strokeWeight(1);
+      startx = radi * Math.cos(degreeToRad(m * count));
+      starty = radi * Math.sin(degreeToRad(m * count));
+      endx =
+        radi * Math.cos(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
+      endy =
+        radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
+
+      line(startx, starty, endx, endy);
+      count++;
+    }
+  }
   stroke('black');
   strokeWeight(5);
 }
+
