@@ -5,43 +5,44 @@ function setup() {
   size = 20;
   degree = 0;
 
+  
   //원의 반지름
   let rr = createP('원의 지름 :');
-  rr.position(100, 50);
+  rr.position(50, 50);
   InputR = createInput('300');
-  InputR.position(200, 70);
+  InputR.position(130, 70);
 
   //점의 개수 입력
   let w = createP('점의 개수 :');
-  w.position(100, 80);
+  w.position(50, 80);
   InputNumber = createInput('36');
-  InputNumber.position(200, 100);
+  InputNumber.position(130, 100);
 
   //y=ax+b 입력
   let s = createP('y=ax+b');
-  s.position(100, 130);
+  s.position(30, 130);
   let sa = createP('a :');
-  sa.position(170, 110);
+  sa.position(98, 110);
   let sb = createP('b :');
-  sb.position(170, 140);
+  sb.position(98, 140);
   InputA = createInput('2');
-  InputA.position(200, 130);
+  InputA.position(130, 130);
   InputB = createInput('0');
-  InputB.position(200, 160);
+  InputB.position(130, 160);
   let t = createP('천천히 그리기');
-  t.position(250, 607);
+  t.position(width / 2-20, height / 2+310);
 
   //체크박스
   checkbox = createCheckbox('숫자표시');
-  checkbox.position(200, 190);
+  checkbox.position(100, 190);
 
   checkboxLine = createCheckbox('한 번에 그리기');
-  checkboxLine.position(300,190);
+  checkboxLine.position(220,190);
 
   //슬라이드
   lineSlider = createSlider(0, 360, 0, 10);
-  lineSlider.position(windowWidth / 2 -70, windowHeight / 2 + 250);
-  lineSlider.size(280);
+  lineSlider.position(windowWidth / 2 -90, windowHeight / 2 + 300);
+  lineSlider.size(220);
 }
 
 function degreeToRad(degree) {
