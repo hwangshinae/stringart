@@ -78,7 +78,7 @@ function draw() {
   //숫자표시 체크박스
   for (let k = 0; k < 360; k += m) {
     if (checkbox.checked()) {
-      if (n < 200) {
+      if (n < 111) {
         textSize(8);
         stroke('black');
         strokeWeight(1);
@@ -109,7 +109,11 @@ function draw() {
       endy =
         radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
 
-      line(startx, starty, endx, endy);
+      if (int(a) == a) {
+        line(startx, starty, endx, endy); //정수일때
+      } else if (int(a) != a) {
+        line(startx, starty, -endx, -endy); //정수가 아닌 소수일때
+      }
       count++;
     }
     //한 번에 그리기기
@@ -126,7 +130,11 @@ function draw() {
       endy =
         radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
 
-      line(startx, starty, endx, endy);
+      if (int(a) == a) {
+        line(startx, starty, endx, endy); //정수일때
+      } else if (int(a) != a) {
+        line(startx, starty, -endx, -endy); //정수가 아닌 소수일때
+      }
       count++;
     }
   }
