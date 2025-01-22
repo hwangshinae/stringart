@@ -8,7 +8,7 @@ function setup() {
   //원의 반지름
   let rr = createP('원의 지름 :');
   rr.position(50, 600);
-  InputR = createInput('350');
+  InputR = createInput('300');
   InputR.position(130, 610);
   InputR.size(50);
 
@@ -74,14 +74,15 @@ function draw() {
   circle(0, -200, radi * 2); //원 그리기
 
   //y=ax+b 값 원 위에 식 보이기
-  text('y = ', -30, -400);
+  textSize(25);
+  text('y = ', -30, -390);
   if (a != 1) {
-    text(a, -10, -400);
+    text(a, 10, -390);
   }
-  text('x ', -0, -400);
+  text('x ', 25, -390);
   if (b != 0) {
-    text('+ ', 10, -400);
-    text(b, 20, -400);
+    text('+ ', 35, -390);
+    text(b, 50, -390);
   }
 
   stroke('blue');
