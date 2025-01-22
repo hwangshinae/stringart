@@ -5,43 +5,46 @@ function setup() {
   size = 20;
   degree = 0;
 
-  
   //원의 반지름
   let rr = createP('원의 지름 :');
-  rr.position(50, 50);
+  rr.position(50, 0);
   InputR = createInput('300');
-  InputR.position(130, 70);
+  InputR.position(130, 10);
+  InputR.size(50);
 
   //점의 개수 입력
   let w = createP('점의 개수 :');
-  w.position(50, 80);
+  w.position(50, 30);
   InputNumber = createInput('36');
-  InputNumber.position(130, 100);
+  InputNumber.position(130, 40);
+  InputNumber.size(50);
 
   //y=ax+b 입력
   let s = createP('y=ax+b');
-  s.position(30, 130);
+  s.position(30, 70);
   let sa = createP('a :');
-  sa.position(98, 110);
+  sa.position(98, 60);
   let sb = createP('b :');
-  sb.position(98, 140);
+  sb.position(98, 90);
   InputA = createInput('2');
-  InputA.position(130, 130);
+  InputA.position(130, 70);
+  InputA.size(50);
   InputB = createInput('0');
-  InputB.position(130, 160);
+  InputB.position(130, 100);
+  InputB.size(50);
   let t = createP('천천히 그리기');
-  t.position(width / 2-20, height / 2+310);
+  t.position(width / 2 - 20, height / 2 + 350);
 
   //체크박스
   checkbox = createCheckbox('숫자표시');
-  checkbox.position(100, 190);
+  checkbox.position(100, 140);
 
   checkboxLine = createCheckbox('한 번에 그리기');
-  checkboxLine.position(220,190);
+  checkboxLine.position(220, 140);
 
   //슬라이드
   lineSlider = createSlider(0, 360, 0, 10);
-  lineSlider.position(windowWidth / 2 -90, windowHeight / 2 + 300);
+  lineSlider.position(windowWidth / 2 - 90, windowHeight / 2 + 340);
   lineSlider.size(220);
 }
 
@@ -52,7 +55,6 @@ function degreeToRad(degree) {
 function draw() {
   background(255, 255, 255);
   translate(width / 2, height / 2);
-  //text('천천히 그리기 :', -250, 245);
 
   radi = 150; //원의 반지름
   r = InputR.value();
@@ -69,11 +71,17 @@ function draw() {
   let count = 0;
 
   strokeWeight(1);
-  circle(0, 0, radi * 2);
+  circle(0, 0, radi * 2); //원 그리기
 
   stroke('blue');
   strokeWeight(8);
   point(radi, 0); //시작점
+
+  for (let p = 0; p < 360; p += m) {
+    stroke('blue');
+    strokeWeight(3);
+    point(radi * Math.cos(degreeToRad(p)), radi * Math.sin(degreeToRad(p)));
+  }
 
   //숫자표시 체크박스
   for (let k = 0; k < 360; k += m) {
@@ -97,9 +105,6 @@ function draw() {
   for (let i = 0; i < 360; i += m) {
     //스크롤바
     if (lineSlider.value() >= i + m) {
-      stroke('blue');
-      strokeWeight(3);
-      point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
       stroke('red');
       strokeWeight(1);
       startx = radi * Math.cos(degreeToRad(m * count));
@@ -116,11 +121,8 @@ function draw() {
       }
       count++;
     }
-    //한 번에 그리기기
+    //한 번에 그리기
     else if (checkboxLine.checked()) {
-      stroke('blue');
-      strokeWeight(3);
-      point(radi * Math.cos(degreeToRad(i)), radi * Math.sin(degreeToRad(i)));
       stroke('red');
       strokeWeight(1);
       startx = radi * Math.cos(degreeToRad(m * count));
@@ -141,4 +143,3 @@ function draw() {
   stroke('black');
   strokeWeight(5);
 }
-
