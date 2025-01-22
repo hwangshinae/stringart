@@ -7,40 +7,40 @@ function setup() {
 
   //원의 반지름
   let rr = createP('원의 지름 :');
-  rr.position(50, 600);
+  rr.position(width / 2 - 70, height / 2 + 180);
   InputR = createInput('300');
-  InputR.position(130, 610);
+  InputR.position(width / 2, height / 2 + 190);
   InputR.size(50);
 
   //점의 개수 입력
   let w = createP('점의 개수 :');
-  w.position(50, 630);
+  w.position(width / 2 - 70, height / 2 + 210);
   InputNumber = createInput('36');
-  InputNumber.position(130, 640);
+  InputNumber.position(width / 2, height / 2 + 220);
   InputNumber.size(50);
 
   //y=ax+b 입력
   let s = createP('y=ax+b');
-  s.position(40, 670);
+  s.position(width / 2 - 90, height / 2 + 250);
   let sa = createP('a :');
-  sa.position(98, 660);
+  sa.position(width / 2 - 20, height / 2 + 240);
   let sb = createP('b :');
-  sb.position(98, 690);
+  sb.position(width / 2 - 20, height / 2 + 270);
   InputA = createInput('2');
-  InputA.position(130, 670);
+  InputA.position(width / 2, height / 2 + 250);
   InputA.size(50);
   InputB = createInput('0');
-  InputB.position(130, 700);
+  InputB.position(width / 2, height / 2 + 280);
   InputB.size(50);
   let t = createP('천천히 그리기');
   t.position(width / 2 - 20, height / 2 + 50);
 
   //체크박스
   checkbox = createCheckbox('숫자표시');
-  checkbox.position(width / 2 - 80, 540);
+  checkbox.position(width / 2 - 80, height / 2 + 120);
 
   checkboxLine = createCheckbox('한 번에 그리기');
-  checkboxLine.position(width / 2 + 30, 540);
+  checkboxLine.position(width / 2 + 30, height / 2 + 120);
 
   //슬라이드
   lineSlider = createSlider(0, 360, 0, 10);
@@ -75,14 +75,15 @@ function draw() {
 
   //y=ax+b 값 원 위에 식 보이기
   textSize(25);
-  text('y = ', -30, -390);
+  text('y =', -50, -r - 80);
   if (a != 1) {
-    text(a, 10, -390);
+    text(a, -10, -r - 80);
   }
-  text('x ', 25, -390);
+
+  text('x ', 20, -r - 80);
   if (b != 0) {
-    text('+ ', 35, -390);
-    text(b, 50, -390);
+    text('+ ', 40, -r - 80);
+    text(b, 60, -r - 80);
   }
 
   stroke('blue');
