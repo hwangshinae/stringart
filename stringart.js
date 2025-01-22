@@ -7,44 +7,44 @@ function setup() {
 
   //원의 반지름
   let rr = createP('원의 지름 :');
-  rr.position(50, 0);
-  InputR = createInput('300');
-  InputR.position(130, 10);
+  rr.position(50, 600);
+  InputR = createInput('350');
+  InputR.position(130, 610);
   InputR.size(50);
 
   //점의 개수 입력
   let w = createP('점의 개수 :');
-  w.position(50, 30);
+  w.position(50, 630);
   InputNumber = createInput('36');
-  InputNumber.position(130, 40);
+  InputNumber.position(130, 640);
   InputNumber.size(50);
 
   //y=ax+b 입력
   let s = createP('y=ax+b');
-  s.position(30, 70);
+  s.position(40, 670);
   let sa = createP('a :');
-  sa.position(98, 60);
+  sa.position(98, 660);
   let sb = createP('b :');
-  sb.position(98, 90);
+  sb.position(98, 690);
   InputA = createInput('2');
-  InputA.position(130, 70);
+  InputA.position(130, 670);
   InputA.size(50);
   InputB = createInput('0');
-  InputB.position(130, 100);
+  InputB.position(130, 700);
   InputB.size(50);
   let t = createP('천천히 그리기');
-  t.position(width / 2 - 20, height / 2 + 350);
+  t.position(width / 2 - 20, height / 2 + 50);
 
   //체크박스
   checkbox = createCheckbox('숫자표시');
-  checkbox.position(100, 140);
+  checkbox.position(width / 2 - 80, 540);
 
   checkboxLine = createCheckbox('한 번에 그리기');
-  checkboxLine.position(220, 140);
+  checkboxLine.position(width / 2 + 30, 540);
 
   //슬라이드
   lineSlider = createSlider(0, 360, 0, 10);
-  lineSlider.position(windowWidth / 2 - 90, windowHeight / 2 + 340);
+  lineSlider.position(windowWidth / 2 - 90, windowHeight / 2 + 40);
   lineSlider.size(220);
 }
 
@@ -61,8 +61,8 @@ function draw() {
   radi = r / 2; //원의 반지름 값 받아오기기
   n = InputNumber.value(); // 점의 개수
   m = 360 / n; // 점 사이 간격 각도
-  a = InputA.value(); // y=ax+b에서 a
-  b = InputB.value(); // y=ax+b에서 b
+  let a = InputA.value(); // y=ax+b에서 a
+  let b = InputB.value(); // y=ax+b에서 b
 
   let startx = 0; //시작점
   let starty = 0;
@@ -71,16 +71,30 @@ function draw() {
   let count = 0;
 
   strokeWeight(1);
-  circle(0, 0, radi * 2); //원 그리기
+  circle(0, -200, radi * 2); //원 그리기
+
+  //y=ax+b 값 원 위에 식 보이기
+  text('y = ', -30, -400);
+  if (a != 1) {
+    text(a, -10, -400);
+  }
+  text('x ', -0, -400);
+  if (b != 0) {
+    text('+ ', 10, -400);
+    text(b, 20, -400);
+  }
 
   stroke('blue');
   strokeWeight(8);
-  point(radi, 0); //시작점
+  point(radi, -200); //시작점
 
   for (let p = 0; p < 360; p += m) {
     stroke('blue');
     strokeWeight(3);
-    point(radi * Math.cos(degreeToRad(p)), radi * Math.sin(degreeToRad(p)));
+    point(
+      radi * Math.cos(degreeToRad(p)),
+      radi * Math.sin(degreeToRad(p)) - 200
+    );
   }
 
   //숫자표시 체크박스
@@ -94,7 +108,7 @@ function draw() {
         text(
           j,
           (radi + 12) * Math.cos(degreeToRad(m * count)) - 7,
-          (radi + 12) * Math.sin(degreeToRad(m * count)) + 3
+          (radi + 12) * Math.sin(degreeToRad(m * count)) + 3 - 200
         );
       }
     }
@@ -115,9 +129,9 @@ function draw() {
         radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
 
       if (int(a) == a) {
-        line(startx, starty, endx, endy); //정수일때
+        line(startx, starty - 200, endx, endy - 200); //정수일때
       } else if (int(a) != a) {
-        line(startx, starty, -endx, -endy); //정수가 아닌 소수일때
+        line(startx, starty - 200, -endx, -endy - 200); //정수가 아닌 소수일때
       }
       count++;
     }
@@ -133,9 +147,9 @@ function draw() {
         radi * Math.sin(degreeToRad(m * (a * count + 1) + m * b + m * (a - 2)));
 
       if (int(a) == a) {
-        line(startx, starty, endx, endy); //정수일때
+        line(startx, starty - 200, endx, endy - 200); //정수일때
       } else if (int(a) != a) {
-        line(startx, starty, -endx, -endy); //정수가 아닌 소수일때
+        line(startx, starty - 200, -endx, -endy - 200); //정수가 아닌 소수일때
       }
       count++;
     }
