@@ -144,9 +144,9 @@ function draw() {
   }
 
   textSize(15);
-  text(n, 35, 215);
-  text(a, 35, 245);
-  text(b, 35, 275);
+  text(n, 35, 230);
+  text(a, 35, 260);
+  text(b, 35, 290);
 
   stroke('blue');
   strokeWeight(8);
